@@ -45,7 +45,7 @@ public class ListaSimples {
 		this.quantNos++;
 	}
 	//retorna o endere�o do n� que est� contendo o valor a ser procurado.
-public No pesquisarNo (int chave){
+	public No pesquisarNo (int chave){
 		No atual = this.prim;
 		while ((atual != null) && (atual.getInfo().getChave() != chave)){
 			atual = atual.getProx();
@@ -126,7 +126,7 @@ public No pesquisarNo (int chave){
 		}
 		return msg;
 	}
-	
+
 	//atividade 02 - questão 07
 	public int calcularSoma() {
 		int soma = 0;
@@ -137,7 +137,7 @@ public No pesquisarNo (int chave){
 		}
 		return soma;
 	}
-	
+
 	//atividade 02 - questão 08
 	public double calcularMedia() {
 		double soma = 0;
@@ -148,8 +148,8 @@ public No pesquisarNo (int chave){
 		}
 		return soma/this.quantNos;
 	}
-	
-	
+
+
 	//atividade 02 - questão 09
 	public int[] valoresPares() {
 		int [] v = new int[this.quantNos];
@@ -162,15 +162,15 @@ public No pesquisarNo (int chave){
 			}
 			atual = atual.getProx();
 		}
-		
+
 		return v;			
 	}
-	
+
 	//atividade 02 - questão 10
 	public boolean verificarIdentica(ListaSimples lista2) {
 		No atual = this.prim;
 		No atual2 = lista2.prim;
-		
+
 		if (this.quantNos != lista2.quantNos) {
 			return false;
 		} else {
@@ -187,4 +187,51 @@ public No pesquisarNo (int chave){
 	}
 
 
-}
+	// atividade 02 - questão 11
+	public boolean procuraNum(int num) {
+		No atual = this.prim;
+
+		while (atual != null) {
+			if (atual.getInfo().getChave() == num) {
+				atual.getInfo().setChave(50);
+				return true;
+			}
+			atual = atual.getProx();
+		}
+		return false;
+	}
+
+
+	//atividade 02 - questao 12
+	public int achaNum(int numero) {
+		No atual = this.prim;
+		int cont = 1;
+
+		while (atual != null) {
+			if (atual.getInfo().getChave() == numero) {
+				return cont;
+			}
+			
+			cont++;
+			atual = atual.getProx();			
+		}
+		this.inserirUltimo(new Item(numero));
+		
+		return cont;
+	}
+
+	public String removeUlti() {
+		No atual = this.prim;
+		int cont = 1;
+		
+		while (atual != null) {
+			if (cont == 3) {
+				atual.setProx(null);
+				return "Elemento " + this.getUlt().getInfo().getChave() + " Removido!";
+			}
+			cont++;
+			atual = atual.getProx();
+		}
+		return "ERROR";
+	}
+ }
