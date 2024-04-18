@@ -165,5 +165,26 @@ public No pesquisarNo (int chave){
 		
 		return v;			
 	}
+	
+	//atividade 02 - questão 10
+	public boolean verificarIdentica(ListaSimples lista2) {
+		No atual = this.prim;
+		No atual2 = lista2.prim;
+		
+		if (this.quantNos != lista2.quantNos) {
+			return false;
+		} else {
+			while (atual != null) {
+				if (atual.getInfo().getChave() != 
+						atual2.getInfo().getChave()) {
+					return false;
+				}
+				atual = atual.getProx();
+				atual2 = atual2.getProx();
+			}
+			return true;
+		}
+	}
+
 
 }

@@ -82,5 +82,23 @@ public class ListaContig {
 		}
 		return msg;
 	}
+	
+	//atividadde 03 - letra d
+	public boolean removerValor() {
+		if (this.eVazia()) {
+			return false;
+		} else {
+			int posicao = this.pesquisarNo(4);
+			if (posicao == this.fim) {
+				return false;
+			} else {
+				for (int i = posicao; i < this.fim; i++) {
+					this.info[i] = this.info[i+1];
+				} 
+				this.fim--;
+				return true;
+			}
+		}
+	}
 }
 
