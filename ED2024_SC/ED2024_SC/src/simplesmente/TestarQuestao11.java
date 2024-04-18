@@ -24,6 +24,7 @@ public class TestarQuestao11 {
 		} else {
 			System.out.println("Não foi possível encontrar o número " + num + ".");
 		}
+		System.out.println(lista.toString());
 		
 		teclado.close();
 	}
