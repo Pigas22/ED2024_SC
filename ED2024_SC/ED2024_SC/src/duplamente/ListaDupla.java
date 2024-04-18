@@ -101,4 +101,37 @@ public class ListaDupla {
 		}
 		return msg;
 	}
+	
+	
+	// Atividade 04 - Questão 06 
+	
+	// Gabarito da Prof
+	public void juntaLista(ListaDupla lista2) {
+		this.ult.setProx(lista2.prim);
+		lista2.prim.setAnt(this.ult);
+		this.ult = lista2.ult;
+		
+		lista2.prim = null;
+		lista2.ult = null;
+		this.quantNos += lista2.quantNos;
+		
+		lista2.quantNos = 0;
+	}
+	
+	// Funciona, mas não é o que ela quer.
+	public void copiaLista (ListaDupla lista2) {
+		NoDupla atualLista2 = lista2.prim;
+		
+		while (atualLista2 != null) {
+			int itemLista2 = atualLista2.getInfo().getChave();
+			
+			this.inserirUltimo(new Item(itemLista2));
+			
+			atualLista2.getProx();
+			atualLista2.setAnt(null);
+		}
+		
+	}
+	
+	
 }
