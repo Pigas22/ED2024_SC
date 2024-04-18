@@ -134,4 +134,28 @@ public class ListaDupla {
 	}
 	
 	
+	// Atividade 04 - Questão 09
+	public double calcularMedia () {
+		double media = 0;
+		
+		NoDupla atual = this.prim;
+		
+		if (this.eVazia()) {
+			return -999999;
+			
+		} else {
+			while (atual != null) {
+				media += atual.getInfo().getChave();
+				
+				atual = atual.getProx();
+			}
+			
+			media = media / this.quantNos;
+			
+			return media;
+		}
+	}
+	
+	
+	
 }
