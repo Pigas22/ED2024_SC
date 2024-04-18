@@ -127,7 +127,7 @@ public No pesquisarNo (int chave){
 		return msg;
 	}
 	
-	//atividade 02 - quest�o 07
+	//atividade 02 - questão 07
 	public int calcularSoma() {
 		int soma = 0;
 		No atual = this.prim;
@@ -138,7 +138,7 @@ public No pesquisarNo (int chave){
 		return soma;
 	}
 	
-	//atividade 02 - quest�o 08
+	//atividade 02 - questão 08
 	public double calcularMedia() {
 		double soma = 0;
 		No atual = this.prim;
@@ -150,5 +150,20 @@ public No pesquisarNo (int chave){
 	}
 	
 	
+	//atividade 02 - questão 09
+	public int[] valoresPares() {
+		int [] v = new int[this.quantNos];
+		No atual = this.prim;
+		int i = 0;
+		while (atual != null) {
+			if (atual.getInfo().getChave() % 2 == 0) {
+				v[i] = atual.getInfo().getChave();
+				i++;
+			}
+			atual = atual.getProx();
+		}
+		
+		return v;			
+	}
 
 }
