@@ -296,9 +296,51 @@ public class ListaDupla {
 		if (this.quantNos == 0) {
 			System.out.println("Não foram encontrados valores repetidos na lista.");
 		}
-		
-		
-		// Atividade 04 - Questão 12
 	}
 
+	// Atividade 04 - Questão 12
+	/* 
+	 * Os dados de um grupo de atletas foram organizados em uma lista linear duplamente encadeada. 
+	 * O campo de informação de cada elemento da lista apresenta o nome e a altura de um atleta. 
+	 * A lista está organizada em ordem alfabética de atletas. Implemente um método para mostrar 
+	 * os nomes dos atletas com altura maior que 2 metro.
+	 */
+
+
+
+	// Atividade 04 - Questão 13
+	/*  
+	 * Escreva um algoritmo que a partir de uma Lista Duplamente Encadeada denominada L1, 
+	 * identifique nesta lista todos os produtos enlatados e insira-os em uma outra Lista Duplamente Encadeada denominada L2. 
+	 * Considerações: 
+	 * • Este método deverá ser escrito na classe da ListaDupla. 
+	 * • A lista L1 não está vazia e a L2 já está instanciada e vazia, será passada por parâmetro. 
+	 * • Se o valor do campo chave for maior do que 100 são produtos enlatados. 
+	 */
+
+	public void listaEnlatados (ListaDupla L2) {
+		NoDupla atual = this.prim;
+
+		while (atual != null) {
+			if (atual.getInfo().getChave() > 100) {
+				L2.inserirUltimo(new Item(atual.getInfo().getChave()));
+			}
+
+			atual = atual.getProx();
+		}
+
+	}
+
+	/*
+	 * Uma frase pode ser representada por uma lista linear duplamente encadeada, sendo que o campo de informação de cada nó da 
+	 * lista contém um único caractere. Implemente um método para saber a palavra que está armazenada na lista encadeada é palíndroma 
+	 * (São aquelas palavras ou frases que são iguais quando lidas de frente para trás e de trás para frente.
+	 */
+	
+	
+	
+	
+	
 }
+
+
