@@ -298,6 +298,12 @@ public class ListaDupla {
 	 * os nomes dos atletas com altura maior que 2 metro.
 	 */
 	public String maiores2Metros () {
+		NoDupla atual = this.prim;
+		
+		
+		while (atual != null) {
+			
+		}
 		
 		
 		
@@ -324,6 +330,33 @@ public class ListaDupla {
 	}
 
 	// Atividade 04 - Questão 14
+	/* 
+	 * Uma frase pode ser representada por uma lista linear duplamente encadeada, 
+	 * sendo que o campo de informação de cada nó da lista contém um único caractere. 
+	 * Implemente um método para saber a palavra que está armazenada na lista encadeada é palíndroma 
+	 * (São aquelas palavras ou frases que são iguais quando lidas de frente para trás e de trás para frente).
+	 */
+	public boolean ehPolindroma() {
+		NoDupla atualIni = this.prim;
+		NoDupla atualFim = this.ult;
+		
+		String palavra = "";
+		String palavraInversa = "";
+		
+		while (atualIni != null) {
+			palavra += (char)atualIni.getInfo().getChave();
+			palavraInversa += (char)atualFim.getInfo().getChave();
+			
+			atualIni = atualIni.getProx();
+			atualFim = atualFim.getAnt();
+		}
+		
+		if (palavra.compareTo(palavraInversa) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	
 	
