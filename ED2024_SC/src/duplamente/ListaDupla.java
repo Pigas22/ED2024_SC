@@ -131,7 +131,7 @@ public class ListaDupla {
 			atualLista2.setAnt(null);
 		}
 
-	}	
+	}
 
 	// Atividade 04 - Questão 07
 	public ListaDupla partirListaAoMeio() {
@@ -202,49 +202,40 @@ public class ListaDupla {
 	}
 
 	// Atividade 04 - Questão 10
-	public void removerZeros() {
-		if (this.eVazia()) {
-			System.out.println("A lista está vazia.");
-			return;
-		}
-
-		NoDupla atual = this.prim;
-
-		while (atual != null) {
-			if (atual.getInfo().getChave() == 0) {
-				// Se o nó atual for o último nó da lista
-				if (atual == this.ult) {
-					this.ult = atual.getAnt();
-				}
-
-				// Se o nó atual for o primeiro nó da lista
-				if (atual == this.prim) {
-					this.prim = atual.getProx();
-					if (this.prim != null) {
-						this.prim.setAnt(null);
+	public boolean removerZeros() {
+		if (this.eVazia()){
+			return false;
+		} else {
+			int cont = 0;
+			NoDupla atual = this.prim;
+			while (atual != null) {
+				if (atual.getInfo().getChave() == 0) {
+					if (atual == this.prim) {
+						this.prim = this.prim.getProx();
+						if (atual == this.ult) {
+							this.ult = null;
+						}else {
+							this.prim.setAnt(null);
+						}
+					}else {
+						if (atual==this.ult) {
+							this.ult = this.ult.getAnt();
+							this.ult.setProx(null);
+						}else {
+							atual.getAnt().setProx(atual.getProx());
+							atual.getProx().setAnt(atual.getAnt());
+						}
 					}
-				} else {
-					NoDupla anterior = atual.getAnt();
-					anterior.setProx(atual.getProx());
-					if (atual.getProx() != null) {
-						atual.getProx().setAnt(anterior);
-					}
+					this.quantNos--;
+					cont++;
 				}
-
-				// Libera o nó atual da memória
-				NoDupla temp = atual;
-				atual = atual.getProx();
-				temp = null;
-
-				// Atualiza a quantidade de nós na lista
-				this.quantNos--;
-			} else {
 				atual = atual.getProx();
 			}
-		}
-
-		if (this.quantNos == 0) {
-			System.out.println("Não foram encontrados valores iguais a 0 na lista.");
+			if (cont == 0) {
+				return false;
+			}else {
+				return true;
+			}
 		}
 	}
 
@@ -297,27 +288,28 @@ public class ListaDupla {
 			System.out.println("Não foram encontrados valores repetidos na lista.");
 		}
 	}
-
+	
+	
 	// Atividade 04 - Questão 12
-	/* 
+	/*
 	 * Os dados de um grupo de atletas foram organizados em uma lista linear duplamente encadeada. 
 	 * O campo de informação de cada elemento da lista apresenta o nome e a altura de um atleta. 
 	 * A lista está organizada em ordem alfabética de atletas. Implemente um método para mostrar 
 	 * os nomes dos atletas com altura maior que 2 metro.
 	 */
-
-
+	public String maiores2Metros () {
+		
+		
+		
+		
+		return this.toString();
+	}
+	
+	
+	
+	
 
 	// Atividade 04 - Questão 13
-	/*  
-	 * Escreva um algoritmo que a partir de uma Lista Duplamente Encadeada denominada L1, 
-	 * identifique nesta lista todos os produtos enlatados e insira-os em uma outra Lista Duplamente Encadeada denominada L2. 
-	 * Considerações: 
-	 * • Este método deverá ser escrito na classe da ListaDupla. 
-	 * • A lista L1 não está vazia e a L2 já está instanciada e vazia, será passada por parâmetro. 
-	 * • Se o valor do campo chave for maior do que 100 são produtos enlatados. 
-	 */
-
 	public void listaEnlatados (ListaDupla L2) {
 		NoDupla atual = this.prim;
 
@@ -331,16 +323,56 @@ public class ListaDupla {
 
 	}
 
-	/*
-	 * Uma frase pode ser representada por uma lista linear duplamente encadeada, sendo que o campo de informação de cada nó da 
-	 * lista contém um único caractere. Implemente um método para saber a palavra que está armazenada na lista encadeada é palíndroma 
-	 * (São aquelas palavras ou frases que são iguais quando lidas de frente para trás e de trás para frente.
-	 */
+	// Atividade 04 - Questão 14
 	
 	
 	
-	
-	
+	// Atividade 04 - Questão 15
+	public void organizaLista(int num) {
+		NoDupla novoNo = new NoDupla(new Item(num));
+
+		if (novoNo.getInfo().getChave() 
+				< this.prim.getInfo().getChave()) {
+			/*
+			 * 1° - Verifique se o novo valor é menor que o valor do primeiro nó, 
+			 * se sim, insira o novo nó antes do primeiro
+			 */
+			novoNo.setProx(this.prim);
+			this.prim = novoNo;
+
+		} else if (novoNo.getInfo().getChave() 
+				> this.ult.getInfo().getChave()) {
+			/*
+			 * 2° - Verifique se o novo valor é maior que o valor do último nó, 
+			 * se sim, insira o novo nó depois do último. 
+			 */
+			novoNo.setAnt(this.ult);
+			this.ult = novoNo;
+		} else {
+			/*
+			 * 3° - se não for nenhuma das possibilidades anteriores, 
+			 * caminhe na lista até achar a posição correta para inserir o novo nó. 
+			 * A lista tem que permanecer ordenada depois da nova inserção
+			 */
+
+			NoDupla atual = this.prim;
+
+			while (atual != null) {
+				if (novoNo.getInfo().getChave() 
+						> atual.getInfo().getChave()) {
+					novoNo.setAnt(atual.getAnt());
+					atual.getAnt().setProx(novoNo);
+
+					novoNo.setProx(atual);
+					atual.setAnt(novoNo);
+				}
+
+				atual.getProx();	
+			}
+		}
+
+		this.quantNos++;
+	}
 }
 
 
