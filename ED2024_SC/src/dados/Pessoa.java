@@ -1,9 +1,14 @@
 package dados;
 
 public class Pessoa {
-	// Classe construída para a atividade 04 - Questão 11
+	// Classe construída para a atividade 04 - Questão 11 e Atividade 06 - Questão 06
 	private String nome;
-	private double altura;
+	private double altura = 0;
+	
+	
+	public Pessoa(String nome) {
+		this.nome = nome;
+	}
 	
 	
 	public Pessoa(String nome, double altura) {

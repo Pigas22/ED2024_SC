@@ -1,3 +1,5 @@
-*.class
-/.metadata/
-/bin/*
+ED2024_SC/.settings/
+ED2024_SC/.metadata/
+ED2024_SC/bin/
+.metadata/
+.project
