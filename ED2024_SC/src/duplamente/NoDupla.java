@@ -6,7 +6,6 @@ import dados.Pessoa;
 
 public class NoDupla {
 	private Item info;
-	private Pessoa infoPessoa;
 	private NoDupla prox;
 	private NoDupla ant;
 	
@@ -18,18 +17,7 @@ public class NoDupla {
 	public Item getInfo (){
 		return this.info;
 	}
-	
-	
-	public NoDupla (Pessoa pessoa) {
-		this.infoPessoa = pessoa;
-		this.prox = null;
-		this.ant = null;
-	}
-	public Pessoa getInfoPessoa() {
-		return this.infoPessoa;
-	}
-	
-	
+		
 	public NoDupla getProx(){
 		return this.prox;
 	}

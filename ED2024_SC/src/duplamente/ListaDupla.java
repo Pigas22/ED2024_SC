@@ -272,9 +272,7 @@ public class ListaDupla {
 						this.ult = anterior;
 					}
 
-					NoDupla temp = verificar;
 					verificar = proximo;
-					temp = null;
 
 					this.quantNos--;
 				} else {

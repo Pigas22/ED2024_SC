@@ -22,12 +22,12 @@ public class TestarRemoverNo {
 		if (lista.removerNo(valor)) {
 			System.out.println("removeu");
 		}else {
-			System.out.println("não achou o valor");
+			System.out.println("nï¿½o achou o valor");
 		}
 		
 		System.out.println("lista depois do remover:\n"+lista.toString());
 		
-
+		scan.close();
 	}
 
 }

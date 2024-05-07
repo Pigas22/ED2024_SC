@@ -22,12 +22,12 @@ public class TestarPesquisa {
 		if (lista.pesquisarNo(valor)!= null) {
 			System.out.println("achou");
 		}else {
-			System.out.println("não achou o valor");
+			System.out.println("nï¿½o achou o valor");
 		}
 		
 		System.out.println("lista depois da pesquisa:\n"+lista.toString());
 		
-
+		scan.close();
 	}
 
 }

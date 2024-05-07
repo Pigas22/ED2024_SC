@@ -1,13 +1,15 @@
 package pilha;
 
 import dados.Item;
+import dados.Pessoa;
+import duplamente.ListaDupla;
 
 public class PilhaContig {
 	private Item [] info;
 	private int topo;
 	public PilhaContig(int qte){
 		this.topo = 0;
-		this.info = new Item [qte];
+		this.info = new Item [qte];						
 	}
 	public Item getInfo(){
 		return this.info[this.topo-1];
@@ -42,7 +44,7 @@ public class PilhaContig {
 	}
 
 
-	// Atividade 05 - Questão 02
+	// Lista 05 - Questão 02
 	public void retirarMaiores10 () {
 		PilhaContig aux = new PilhaContig(this.topo);
 		Item item;
@@ -62,7 +64,7 @@ public class PilhaContig {
 	}
 
 
-	// Atividade 05 - Questão 03
+	// Lista 05 - Questão 03
 	public int verificarIdenticas(PilhaContig pilha2) {
 		if (this.eVazia() && pilha2.eVazia()) {
 			return 1;
@@ -101,5 +103,36 @@ public class PilhaContig {
 				}
 			}
 		}
+	}
+
+	/*
+	 * Lista 06 - Questão 7
+	 * 7) Foram realizadas inscrições para a maratona de programação. Estas inscrições foram armazenadas em uma Fila Circular.
+	 * O problema é que um conjunto de alunos não podem mais participar do evento. Implemente um método que retire da Fila 
+	 * todas as ocorrências destes alunos e insira em uma Lista Duplamente encadeada.
+	 * Considerações:
+	 *		- A Fila não está vazia e a Lista será retornada pelo método;
+	 *		- As duas estruturas têm o mesmo tipo de dados;
+	 *		- Se o valor do campo chave for “true”, o aluno será removido da fila e inserido no final da 
+	 *	          Lista Duplamente Encadeada. A Fila pode ter um, vários ou nenhum aluno com chave igual à “true”;
+	 *		- Os alunos com campos chaves iguais à “false” deverão permanecer na fila na mesma ordem em que entraram
+	*/
+	public ListaDupla removeAlunosEvento (String stringAlunosExpulsos) {
+		ListaDupla listaAlunosRemovidos = new ListaDupla();
+		String[] separator = {",", ".", ":"};		
+		
+		for (int i = 0; i < 3; i++) {
+			if (stringAlunosExpulsos.contains(separator[i])) {
+				stringAlunosExpulsos = stringAlunosExpulsos.replace(separator[i], ";");
+			}			
+		}
+		String[] listAlunosExpulsos = stringAlunosExpulsos.split(";");
+		
+		
+		if (this.eVazia()) {
+			System.out.println("A pilha está vazia.");
+		} 
+		
+		return listaAlunosRemovidos;
 	}
 }
