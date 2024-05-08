@@ -1,7 +1,6 @@
 package pilha;
 
 import dados.Item;
-import dados.Pessoa;
 import duplamente.ListaDupla;
 
 public class PilhaContig {
@@ -119,20 +118,41 @@ public class PilhaContig {
 	*/
 	public ListaDupla removeAlunosEvento (String stringAlunosExpulsos) {
 		ListaDupla listaAlunosRemovidos = new ListaDupla();
-		String[] separator = {",", ".", ":"};		
-		
+		final String[] SEPARATORS = {",", ".", ":"};		
+
 		for (int i = 0; i < 3; i++) {
-			if (stringAlunosExpulsos.contains(separator[i])) {
-				stringAlunosExpulsos = stringAlunosExpulsos.replace(separator[i], ";");
+			if (stringAlunosExpulsos.contains(SEPARATORS[i])) {
+				stringAlunosExpulsos = stringAlunosExpulsos.replace(SEPARATORS[i], ";");
 			}			
 		}
 		String[] listAlunosExpulsos = stringAlunosExpulsos.split(";");
-		
-		
+
 		if (this.eVazia()) {
 			System.out.println("A pilha está vazia.");
-		} 
-		
+		} else {
+			PilhaContig aux = new PilhaContig(this.topo);
+			for (int indexAlunos = 0; indexAlunos < listAlunosExpulsos.length; indexAlunos++) {
+				for (int tamanhoPilha = 0; tamanhoPilha < this.getTopo(); tamanhoPilha++) {
+
+					Item alunoDados = this.desempilhar();
+					aux.empilhar(alunoDados);
+
+					if (listAlunosExpulsos[indexAlunos]
+							.equals(alunoDados.getNome())) {
+
+						listaAlunosRemovidos.inserirUltimo(alunoDados);
+						System.out.println("Aluno Expulso encontrado na Fila");
+
+						break;
+					}
+				}
+			}
+
+			for (int tamanhoPilha2 = 0; tamanhoPilha2 <= aux.getTopo(); tamanhoPilha2++) {
+				this.empilhar(aux.desempilhar());
+			}
+		}
+
 		return listaAlunosRemovidos;
 	}
 }

@@ -2,13 +2,13 @@ package dados;
 
 public class Item {
 	private int chave;
-	private String[] dadosPessoas;
-	
+	private String nome;
 	// aqui podem ser declarados outros atributos conforme sua necessidade.
 	
 	//Construtor de objetos da classe Item
 	public Item(int ch) {
 		this.chave = ch;
+		this.isStringContructorUsed = false;
 	}
 	//Modifica o valor do atributo chave
 	public void setChave (int ch){
@@ -22,25 +22,21 @@ public class Item {
 	/*
 	 * Lista 06 - Questão 07
 	 */
-	public Item(int index, String nome) {
-		String[] dadosPessoas = {Integer.toString(index), nome};
-		
-		this.dadosPessoas = dadosPessoas;
+	private boolean isStringContructorUsed;
+
+	public Item(String nome) {
+		this.nome = nome;
+		this.isStringContructorUsed = true;
 	}
 	
 	public String getNome() {
-		return dadosPessoas[2];
+		return nome;
 	}
-	public void setNome(String nome) {
-		this.dadosPessoas[2] = nome;
+	public void setNome(String novoNome) {
+		this.nome = novoNome;
 	}
-	public int getIndex() {
-		return Integer.parseInt(dadosPessoas[1]);
+
+	public boolean getIsStringConstructorUsed() {
+		return this.isStringContructorUsed;
 	}
-	public void setIndex(int index) {
-		this.dadosPessoas[1] = Integer.toString(index);
-	}
-	public String[] getDadosPessoas() {
-		return dadosPessoas;
-	}
-}
+ }

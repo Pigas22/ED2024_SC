@@ -96,7 +96,11 @@ public class ListaDupla {
 		String msg="";
 		NoDupla atual = this.prim;
 		while (atual != null){
-			msg += atual.getInfo().getChave()+"\n";
+			if (atual.getInfo().getIsStringConstructorUsed()) {
+				msg += atual.getInfo().getNome()+"; ";
+			} else {
+				msg += atual.getInfo().getChave()+"\n";				
+			}
 			atual = atual.getProx();
 		}
 		return msg;
