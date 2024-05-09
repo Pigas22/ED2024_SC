@@ -17,7 +17,7 @@ public class TestarAlunosExpulsos {
 
 
 		for (int i = 0; i < tamPilha; i ++) {
-			System.out.println("Digite o nome do Competidor:");
+			System.out.print("Digite o nome do Competidor:");
 			String competidor = teclado.next();		
 
 			pilha.empilhar(new Item(competidor));
@@ -31,6 +31,11 @@ public class TestarAlunosExpulsos {
 
 
 		System.out.println(listaTeste.toString());
+
+
+		for (int i = 0; i <= pilha.getTopo(); i++) {
+			System.out.print(pilha.desempilhar().getNome() + "; ");
+		}
 
 		teclado.close();
 	}

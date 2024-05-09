@@ -115,44 +115,50 @@ public class PilhaContig {
 	 *		- Se o valor do campo chave for “true”, o aluno será removido da fila e inserido no final da 
 	 *	          Lista Duplamente Encadeada. A Fila pode ter um, vários ou nenhum aluno com chave igual à “true”;
 	 *		- Os alunos com campos chaves iguais à “false” deverão permanecer na fila na mesma ordem em que entraram
-	*/
+	 */
 	public ListaDupla removeAlunosEvento (String stringAlunosExpulsos) {
 		ListaDupla listaAlunosRemovidos = new ListaDupla();
-		final String[] SEPARATORS = {",", ".", ":"};		
 
-		for (int i = 0; i < 3; i++) {
-			if (stringAlunosExpulsos.contains(SEPARATORS[i])) {
-				stringAlunosExpulsos = stringAlunosExpulsos.replace(SEPARATORS[i], ";");
-			}			
-		}
-		String[] listAlunosExpulsos = stringAlunosExpulsos.split(";");
 
 		if (this.eVazia()) {
 			System.out.println("A pilha está vazia.");
 		} else {
+			final String[] SEPARATORS = {",", ".", ":"};	
+
+			for (int i = 0; i < 3; i++) {
+				if (stringAlunosExpulsos.contains(SEPARATORS[i])) {
+					stringAlunosExpulsos = stringAlunosExpulsos.replace(SEPARATORS[i], ";");
+				}			
+			}
 			PilhaContig aux = new PilhaContig(this.topo);
-			for (int indexAlunos = 0; indexAlunos < listAlunosExpulsos.length; indexAlunos++) {
-				for (int tamanhoPilha = 0; tamanhoPilha < this.getTopo(); tamanhoPilha++) {
 
-					Item alunoDados = this.desempilhar();
-					aux.empilhar(alunoDados);
+			String[] listAlunosExpulsos = stringAlunosExpulsos.split(";");
 
-					if (listAlunosExpulsos[indexAlunos]
-							.equals(alunoDados.getNome())) {
+			Item alunoDados;
+
+			for (int tamanhoPilha = 0; tamanhoPilha <= this.getTopo(); tamanhoPilha++) {
+				for (int indexAlunos = 0; indexAlunos < listAlunosExpulsos.length; indexAlunos++) {
+
+					alunoDados = this.desempilhar();
+
+					if (alunoDados.getNome()
+							.equals(listAlunosExpulsos[indexAlunos])) {
 
 						listaAlunosRemovidos.inserirUltimo(alunoDados);
 						System.out.println("Aluno Expulso encontrado na Fila");
 
 						break;
 					}
+
+					aux.empilhar(alunoDados);
 				}
 			}
 
-			for (int tamanhoPilha2 = 0; tamanhoPilha2 <= aux.getTopo(); tamanhoPilha2++) {
+			for (int tamanhoPilha2 = 0; tamanhoPilha2 < aux.getTopo(); tamanhoPilha2++) {
 				this.empilhar(aux.desempilhar());
 			}
-		}
 
+		}
 		return listaAlunosRemovidos;
 	}
 }
