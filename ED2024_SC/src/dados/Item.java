@@ -6,7 +6,6 @@ public class Item {
 	/*
 	 * Lista 06 - Questão 07
 	 */
-	private boolean expulsarAluno = false;
 	private boolean isStringContructorUsed;
 	private String nome; 
 	
@@ -42,12 +41,4 @@ public class Item {
 	public boolean getIsStringConstructorUsed() {
 		return this.isStringContructorUsed;
 	}	
-	
-	public void setExpulsarAluno (boolean expulsarAluno) {
-		this.expulsarAluno = expulsarAluno;
-	}
-	public boolean getExpulsarAluno () {
-		return this.expulsarAluno;
-	}
-	
 }
