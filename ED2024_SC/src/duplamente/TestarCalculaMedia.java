@@ -1,7 +1,5 @@
 package duplamente;
 
-import dados.Item;
-
 public class TestarCalculaMedia {
 
 	public static void main(String[] args) {
