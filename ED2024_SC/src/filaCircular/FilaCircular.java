@@ -71,6 +71,17 @@ public class FilaCircular {
 		}
 		return msg;
 	}
+	
+	public String toStringQuestao07(){ //imprimir o conteúdo da fila
+		String msg="";
+		int aux= this.frente;
+		for (int i=1; i <= this.tamanho; i++){
+			msg+= (" - " + this.info[aux].getNome()+";\n");
+			aux= (++aux % this.info.length);
+		}
+		return msg;
+	}
+
 
 	/*
 	 * Lista 06 - Questão 7
@@ -107,7 +118,9 @@ public class FilaCircular {
 					pessoa = this.desenfileirar();
 					if (listNomes[f].equals(pessoa.getNome())) {
 
-						System.out.println("Aluno removido da Fila: " + pessoa.getNome());
+						// Para teste no terminal:
+						// System.out.println("Aluno removido da Fila: " + pessoa.getNome());
+						// System.out.println("\n========================================");
 						listAlunosExpulsos.inserirUltimo(pessoa);
 
 						break;
