@@ -41,6 +41,28 @@ public class PilhaContig {
 		}
 	}
 
+	public String toString() {
+		String msg = "";
+		int tamanho = this.topo;
+		int cont = 0;
+		int cont2 = 0;
+		Item item;
+		PilhaContig aux = new PilhaContig(this.topo);
+
+		while (cont < tamanho) {
+			item = this.desempilhar();
+			aux.empilhar(item);
+			cont++;
+		}
+		
+		while (cont2 < tamanho) {
+			item = aux.desempilhar();
+			msg += " " + item.getChave();
+			cont2++;
+		}
+
+		return msg;
+	}
 
 	// Atividade 05 - Questão 02
 	public void retirarMaiores10 () {
@@ -92,6 +114,7 @@ public class PilhaContig {
 					this.empilhar(aux.desempilhar());
 					pilha2.empilhar(aux2.desempilhar());
 				}
+				
 				if (igual) {
 					return 1;
 
@@ -99,6 +122,7 @@ public class PilhaContig {
 					return 0;
 
 				}
+
 			}
 		}
 	}
