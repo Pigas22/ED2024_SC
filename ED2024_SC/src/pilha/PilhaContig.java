@@ -126,4 +126,50 @@ public class PilhaContig {
 			}
 		}
 	}
+
+	public String toString() {
+		String msg = "";
+		int cont = 0;
+		int cont2 = 0;
+		int tamanho = this.topo;
+		Item item;
+		PilhaContig aux = new PilhaContig(this.topo);
+
+
+		while (cont < tamanho) {
+			item = this.desempilhar();
+			aux.empilhar(item);
+			cont++;
+		}
+
+		while (cont2 < tamanho) {
+			item = aux.desempilhar();
+			msg += " " + item.getChave();
+			this.empilhar(item);
+			cont2++;
+		}
+
+		return msg;
+	}
+
+
+
+	public void invertePilha() {
+		FilaCircular aux = new FilaCircular(this.topo);
+		Item item;
+
+		int tamanho = this.topo;
+
+		for (int i = 0; i < tamanho; i ++) {
+			item = this.desempilhar();
+
+			aux.enfileirar(item);
+		}
+
+		for (int f = 0; f < tamanho; f++) {
+			item = aux.desenfileirar();
+
+			this.empilhar(item);
+		}
+	}
 }

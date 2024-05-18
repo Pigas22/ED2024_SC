@@ -148,4 +148,29 @@ public class FilaCircular {
 		}
 		return msg;
 	}
+
+
+	public double calculaMedia () {
+		FilaCircular aux = new FilaCircular(this.tamanho);
+		int soma = 0;
+		double media;
+		Item item;
+
+		while (this.tamanho != 0) {
+			item = this.desenfileirar();
+
+			soma += item.getChave();
+
+			aux.enfileirar(item);
+		}
+
+		while (aux.tamanho != 0) {
+			item = aux.desenfileirar();
+			this.enfileirar(item);
+		}
+
+		media = ((double)soma) / this.tamanho;
+
+		return media;
+	}
 }

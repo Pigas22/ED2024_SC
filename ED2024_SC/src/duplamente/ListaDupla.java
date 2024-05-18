@@ -408,6 +408,25 @@ public class ListaDupla {
 
 		this.quantNos++;
 	}
+
+	public void removeKesimo(int posicaoItem) {
+		NoDupla atual = this.prim;
+		int contNo = 1;
+
+
+		while (atual != null) {
+			if (posicaoItem == contNo) {
+				NoDupla noRemovido = atual;
+
+				atual.getAnt().setProx(noRemovido.getProx());
+				atual.getProx().setAnt(noRemovido.getAnt());
+
+				noRemovido.setAnt(null);
+				noRemovido.setProx(null);
+			}
+
+			contNo++;
+			atual = atual.getProx();
+		}
+	}
 }
-
-
