@@ -1,6 +1,7 @@
 package pilha;
 
 import dados.Item;
+import filaCircular.FilaCircular;
 
 public class PilhaContig {
 	private Item [] info;
@@ -39,29 +40,6 @@ public class PilhaContig {
 			this.topo--;
 			return this.info[this.topo];
 		}
-	}
-
-	public String toString() {
-		String msg = "";
-		int tamanho = this.topo;
-		int cont = 0;
-		int cont2 = 0;
-		Item item;
-		PilhaContig aux = new PilhaContig(this.topo);
-
-		while (cont < tamanho) {
-			item = this.desempilhar();
-			aux.empilhar(item);
-			cont++;
-		}
-		
-		while (cont2 < tamanho) {
-			item = aux.desempilhar();
-			msg += " " + item.getChave();
-			cont2++;
-		}
-
-		return msg;
 	}
 
 	// Atividade 05 - Questão 02
@@ -114,7 +92,7 @@ public class PilhaContig {
 					this.empilhar(aux.desempilhar());
 					pilha2.empilhar(aux2.desempilhar());
 				}
-				
+
 				if (igual) {
 					return 1;
 
