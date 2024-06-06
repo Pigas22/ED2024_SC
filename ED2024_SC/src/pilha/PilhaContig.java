@@ -111,11 +111,15 @@ public class PilhaContig {
 		int cont2 = 0;
 		int tamanho = this.topo;
 		Item item;
+		PilhaContig copia = new PilhaContig(this.topo);
 		PilhaContig aux = new PilhaContig(this.topo);
 
+		for (int f = 0; f < this.info.length; f++) {
+			copia.empilhar(this.info[f]);
+		}
 
 		while (cont < tamanho) {
-			item = this.desempilhar();
+			item = copia.desempilhar();
 			aux.empilhar(item);
 			cont++;
 		}
@@ -123,7 +127,7 @@ public class PilhaContig {
 		while (cont2 < tamanho) {
 			item = aux.desempilhar();
 			msg += " " + item.getChave();
-			this.empilhar(item);
+			copia.empilhar(item);
 			cont2++;
 		}
 
